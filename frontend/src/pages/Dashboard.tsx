@@ -67,7 +67,7 @@ function  Dashboard() {
       setShowModal(false);
       setEditingTask(null);
     } catch (err: any) {
-      throw new Error(err.response?.data?.message || 'Failed to save task');
+      setError(err.response?.data?.message || 'Failed to save task');
     }
   };
 
