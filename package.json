@@ -19,5 +19,8 @@
     "lint:frontend": "npm run lint --workspace frontend"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "optionalDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.60.1"
+  }
 }
