@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
- 
+
 jobs:
   codeql:
     name: CodeQL Analysis
@@ -15,6 +15,10 @@ jobs:
       actions: read
       contents: read
     
+    strategy:
+      matrix:
+        language: [ 'javascript' ]
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,10 +26,15 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: javascript, typescript
+          languages: ${{ matrix.language }}
+      
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
       
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
 
   npm-audit-backend:
     name: NPM Audit - Backend
