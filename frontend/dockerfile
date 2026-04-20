@@ -10,7 +10,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 
-RUN --mount=type=cache,target=/root/.npm npm ci
+RUN npm install --production
 
 
 COPY . .
@@ -31,7 +31,7 @@ WORKDIR /app
 COPY --link --from=builder /app/dist ./dist
 
 
-RUN --mount=type=cache,target=/root/.npm npm install serve@^14.2.6 --omit=dev
+RUN npm install --production
 
 
 USER node
