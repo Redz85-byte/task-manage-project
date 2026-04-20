@@ -2,7 +2,7 @@ name: Build Docker Images
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -24,8 +24,7 @@ jobs:
           file: ./backend/Dockerfile
           push: false
           tags: backend:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          no-cache: true
 
   build-frontend:
     runs-on: ubuntu-latest
@@ -44,5 +43,4 @@ jobs:
           file: ./frontend/Dockerfile
           push: false
           tags: frontend:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          no-cache: true
