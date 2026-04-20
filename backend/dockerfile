@@ -11,7 +11,7 @@ WORKDIR /app
 COPY package*.json ./
 
 
-RUN --mount=type=cache,target=/root/.npm npm ci --only=production
+RUN npm install --production
 
 
 COPY . .
