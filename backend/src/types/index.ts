@@ -5,7 +5,12 @@ export interface AuthRequest extends Request {
     id: number;
     email: string;
   };
+  body: any;
+  params: any;
+  query: any;
+  headers: any;
 }
+
 
 export interface CreateUserDTO {
   name: string;
